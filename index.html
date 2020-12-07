@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<title>HW2 - Типи даних</title>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="homework">
+    <meta name="author" content="Roman Kupchak">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700,400italic' rel='stylesheet'
+          type='text/css'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-CuOF+2SnTUfTwSZjCXf01h7uYhfOBuxIhGKPbfEJ3+FqH/s6cIFN9bGr1HmAg4fQ" crossorigin="anonymous">
+    <link href="css/style.css" rel="stylesheet" media="all">
+</head>
+<style>
+    p.green {
+        color: green;
+    }
+
+    p.red {
+        color: red;
+    }
+</style>
+<body>
+<main class="container">
+    <div class="starter-template text-center py-1 px-3">
+        <h1>HW-2 Типи даних</h1>
+        <p class="lead">Використано <a href="https://v5.getbootstrap.com/" target="_blank">Bootstrap
+            v5.0.0-alpha3</a></p>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <div class="card h-100">
+                <h5 class="card-header"><p class="lead">Проекспериментувати з типами даних.</p></h5>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <code>1.let some = null;</code><br>
+                            <code>some = Number(some);</code>
+                            <p class="green">console.log(some) //0</p>
+                        </div>
+                        <div class="col-md-6">
+                            <code>2.let some = 0;</code><br>
+                            <code>some = String(some);</code>
+                            <p class="green mb-0">console.log(some) // 0</p>
+                            <p class="green">console.log(typeof some) // string</p>
+                        </div>
+                        <div class="col-md-6">
+                            <code>3.let some = 0;</code><br>
+                            <code>some = String(some);</code>
+                            <p class="green mb-0">console.log(some) // 0</p>
+                            <p class="green">console.log(typeof some) // string</p>
+                        </div>
+                        <div class="col-md-6">
+                        <code>4.let some = 0;</code><br>
+                        <code>some = Boolean(some);</code>
+                        <p class="green mb-0">console.log(some) // false</p>
+                        </div>
+                        <div class="col-md-6">
+                        <code>5.let some = '0';</code><br>
+                        <code>some = Boolean(some);</code>
+                        <p class="green mb-0">console.log(some) // true</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-3">
+            <div class="card h-100">
+                <h5 class="card-header"><p class="lead">Написати конвертер валют - пишете скільки у вас є гривень і які
+                    очікуємо можливі конвертації - у долар, євро, нафту(brent), золото. Додатково зробити перевірку чи
+                    не обманює вас юзер і перевіряти чи не прийшов вам null or undefined.</p></h5>
+                <div class="card-body">
+                    <div class="input-group">
+                        <input type="number" id="UserUAH" class="form-control myValidate"
+                               aria-describedby="button-addon1">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" id="button-addon1"
+                                    onclick="ConvertToAll()">Клікни
+                            </button>
+                        </div>
+                    </div>
+                    <div id="ConvertList"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-3">
+            <div class="card h-100">
+                <h5 class="card-header"><p class="lead">Спитатись у юзера суму замовлення і вивести результат з
+                    урахуванням знижки : до 500 гривень знижка -1 %, від 500 до 1000 - 5%, більше 1000 - 10% та
+                    подарунковий сертифікат на 200 гривень у подарунок!</p></h5>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Сума вашого замовлення</label>
+                            <input type="number" oninput="DiscountForUser()" class="form-control" id="OrderSum"/>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Ваша знижка</label>
+                            <input type="number" class="form-control" id="DiscountSum" disabled="disabled"/>
+                        </div>
+                        <div id="CertificateForUser" class="mt-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-3">
+            <div class="card h-100">
+                <h5 class="card-header"><p class="lead">Створити тест на знання будь-чого, юзер має відповісти на 5
+                    питань, вірна відповідь - 1 бал, якщо юзер відповість правильно на всі 5 запитань - додатково додати
+                    1 бонусний бал.</p></h5>
+                <div class="card-body">
+                    <h2 class="quizHeader">Тест вікторина</h2>
+                    <table style="max-width:100%">
+                        <tr>
+                            <td>
+                                <div>
+                                    <p class="QuestionForUser">1. Запитання #1</p>
+
+                                    <ul>
+                                        <input class="AnswerFromUser" type="radio" name="q1" value="1">
+                                        <label id="correctString1">Правильна відповідь 1</label>
+                                        <br>
+                                        <input class="AnswerFromUser" type="radio" name="q1" value="0">
+                                        <label>Неправильна відповідь</label>
+                                        <br>
+                                        <input class="AnswerFromUser" type="radio" name="q1" value="0">
+                                        <label>Неправильна відповідь</label>
+                                        <br>
+                                        <input class="AnswerFromUser" type="radio" name="q1" value="0">
+                                        <label>Неправильна відповідь</label>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <p class="QuestionForUser">2. Запитання #2</p>
+
+                                    <ul>
+                                        <input class="AnswerFromUser" type="radio" name="q2" value="0">
+                                        <label>Неправильна відповідь</label>
+                                        <br>
+                                        <input class="AnswerFromUser" type="radio" name="q2" value="1">
+                                        <label id="correctString2">Правильна відповідь 2</label>
+                                        <br>
+                                        <input class="AnswerFromUser" type="radio" name="q2" value="0">
+                                        <label>Неправильна відповідь</label>
+                                        <br>
+                                        <input class="AnswerFromUser" type="radio" name="q2" value="0">
+                                        <label>Неправильна відповідь</label>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div>
+                                    <p class="QuestionForUser">3. Запитання #3</p>
+
+                                    <ul>
+                                        <input class="AnswerFromUser" type="radio" name="q3" value="0">
+                                        <label>Неправильна відповідь</label>
+                                        <br>
+                                        <input class="AnswerFromUser" type="radio" name="q3" value="1">
+                                        <label id="correctString3">Правильна відповідь 3</label>
+                                        <br>
+                                        <input class="AnswerFromUser" type="radio" name="q3" value="0">
+                                        <label>Неправильна відповідь</label>
+                                        <br>
+                                        <input class="AnswerFromUser" type="radio" name="q3" value="0">
+                                        <label>Неправильна відповідь</label>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <p class="QuestionForUser">4. Запитання #4</p>
+
+                                    <ul>
+                                        <input class="AnswerFromUser" type="radio" name="q4" value="0">
+                                        <label>Неправильна відповідь</label>
+                                        <br>
+                                        <input class="AnswerFromUser" type="radio" name="q4" value="1">
+                                        <label id="correctString4">Правильна відповідь 4</label>
+                                        <br>
+                                        <input class="AnswerFromUser" type="radio" name="q4" value="0">
+                                        <label>Неправильна відповідь</label>
+                                        <br>
+                                        <input class="AnswerFromUser" type="radio" name="q4" value="0">
+                                        <label>Неправильна відповідь</label>
+                                    </ul>
+                                </div>
+                            </td>
+<!--                            <td id="BunusQuestion" style="display: none">-->
+<!--                                <div>-->
+<!--                                    <p class="QuestionForUser">5. Запитання #5(BONUS) </p>-->
+
+<!--                                    <ul>-->
+<!--                                        <input class="AnswerFromUser" type="radio" name="q5" value="0">-->
+<!--                                        <label>Неправильна відповідь</label>-->
+<!--                                        <br>-->
+<!--                                        <input class="AnswerFromUser" type="radio" name="q5" value="1">-->
+<!--                                        <label id="correctString5">Правильна відповідь 4</label>-->
+<!--                                        <br>-->
+<!--                                        <input class="AnswerFromUser" type="radio" name="q5" value="0">-->
+<!--                                        <label>Неправильна відповідь</label>-->
+<!--                                        <br>-->
+<!--                                        <input class="AnswerFromUser" type="radio" name="q5" value="0">-->
+<!--                                        <label>Неправильна відповідь</label>-->
+<!--                                    </ul>-->
+<!--                                </div>-->
+<!--                            </td>-->
+                        </tr>
+                    </table>
+                    <br/>
+                    <div class="submitter">
+                        <input class="quizSubmit" id="submitButton" onClick="submitQuiz()"
+                               type="submit" value="Жми"/>
+                    </div>
+                    <div class="quizAnswers" id="correctAnswer1"></div>
+                    <div class="quizAnswers" id="correctAnswer2"></div>
+                    <div class="quizAnswers" id="correctAnswer3"></div>
+                    <div class="quizAnswers" id="correctAnswer4"></div>
+                    <div class="quizAnswers" id="correctAnswer5" style="display: none"></div>
+                    <div>
+                        <h2 class="quizScore" id="userScore"></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-3">
+        <div class="card h-100">
+            <h5 class="card-header"><p class="lead">Запитатись у користувача 3 значне число та сказати чи є у ньому
+                однакові цифри.</p></h5>
+            <div class="card-body">
+                <div class="form-group col">
+                    <label>Введіть тризначне число</label>
+                    <input type="number" class="form-control" id="FullNumber" oninput="ThreeDigitNumber()"/>
+                </div>
+                <p id="ThreeDigitNumberResult" class="lead"></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-3">
+        <div class="card h-100">
+            <h5 class="card-header"><p class="lead">Запитатись у юзера одну кнопку від 1 до = 0 на клавіатурі та вивести
+                що буде при нажиманні цифри разом з шифтом.</p></h5>
+            <div class="card-body">
+                <button class="btn btn-secondary" onclick="UserSomeWrite()">Клацни</button>
+                <p id="UserSomeWriteAnswer" class="lead"></p>
+            </div>
+        </div>
+    </div>
+    </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-popRpmFF9JQgExhfw5tZT4I9/CI5e2QcuUZPOVXb1m7qUmeR2b50u+YFEYe1wgzy" crossorigin="anonymous">
+</script>
+<script src="js/main.js"></script>
+<script>
+    // document.querySelector('.myValidate').addEventListener('keyup', function () {
+    //     var reg = /[а-яА-Яa-zA-Z,' ']/g;
+    //     // if (this.value.search(reg) !=  -1) {
+    //     this.value = this.value.replace(reg, '');
+    //     // }
+    //
+    //     // this.value = this.value.replace(/[^\d]/g, '');
+    //     // this.value = this.value.replace(/^[0-9]+\.[0-9]$/i);
+    //
+    // });
+</script>
+</body>
+
+</html>
